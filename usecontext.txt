@@ -1,0 +1,35 @@
+import {useState,createContext,useContext}from "react";
+import ReactDOM from "react-dom/client";
+const UserContext=createContext();
+
+function Component() {
+
+return(
+    <UserContext.Provider value="updated">
+           <Component3/>
+        </UserContext.Provider>
+);
+}
+function Component2(){
+    const val=useContext(UserContext);
+    return (
+        <>
+        <h1>{val}</h1>
+        <Component3/>
+        </>
+        );
+       }
+
+       function Component3(){
+        const val=useContext(UserContext);
+        return (
+            <>
+            <h1>{val}</h1>
+            </>
+            );
+           }
+
+const root=ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Component/>);       
+
+
